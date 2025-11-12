@@ -54,13 +54,17 @@ export default function Login() {
           {/* Logo */}
           <div className="flex justify-center mb-8">
             <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
-              <Wallet size={32} className="text-primary-foreground" />
+              <img
+                src="/favicon.ico"
+                alt="Logo"
+                className="w-8 h-8" // ajusta o tamanho
+              />
             </div>
           </div>
 
           {/* Title */}
           <h1 className="text-3xl font-bold text-center mb-2 text-foreground">
-            FinTrack
+            GBConnect
           </h1>
           <p className="text-center text-muted-foreground mb-8">
             Bem-vindo! Faça login com seu token
