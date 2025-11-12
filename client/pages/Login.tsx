@@ -53,11 +53,11 @@ export default function Login() {
         <div className="bg-card rounded-2xl shadow-2xl p-8">
           {/* Logo */}
           <div className="flex justify-center mb-8">
-            <div className="w-16 h-16 bg-primary rounded-2xl flex items-center justify-center">
+            <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
               <img
-                src="/favicon.ico"
+                src="/logo.png"
                 alt="Logo"
-                className="w-8 h-8" // ajusta o tamanho
+                className="w-12 h-12" // ajusta o tamanho
               />
             </div>
           </div>
