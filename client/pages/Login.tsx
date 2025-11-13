@@ -52,16 +52,14 @@ export default function Login() {
         {/* Card */}
         <div className="bg-card rounded-2xl shadow-2xl p-8">
           {/* Logo */}
-          <div className="flex justify-center mb-8">
-            <div className="w-16 h-16 rounded-2xl flex items-center justify-center">
+          <div className="flex flex-col items-center mb-8">
+            <div className="w-20 h-20 rounded-full overflow-hidden shadow-lg mb-3">
               <img
                 src="/logo.png"
                 alt="Logo"
-                className="w-64 h-64" // ajusta o tamanho
+                className="w-full h-full object-cover"
               />
-            </div>
-          </div>
-
+		  </div>
           {/* Title */}
           <h1 className="text-3xl font-bold text-center mb-2 text-foreground">
             GBConnect
