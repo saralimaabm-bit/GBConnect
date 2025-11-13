@@ -59,6 +59,7 @@ export default function Login() {
                 alt="Logo"
                 className="w-full h-full object-cover"
               />
+			</div>
 		  </div>
           {/* Title */}
           <h1 className="text-3xl font-bold text-center mb-2 text-foreground">
