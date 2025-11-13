@@ -69,8 +69,12 @@ export const Layout: React.FC<LayoutProps> = ({ children, isAdmin = false }) => 
       <div className="w-64 bg-sidebar border-r border-sidebar-border flex flex-col">
         <div className="p-6 border-b border-sidebar-border">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-sidebar-primary rounded-lg flex items-center justify-center">
-              <Wallet size={24} className="text-sidebar-primary-foreground" />
+            <div className="w-10 h-10 rounded-full overflow-hidden flex items-center justify-center">
+              <img
+                src="/logo.png"
+                alt="Logo"
+                className="w-full h-full object-contain"
+              />
             </div>
             <div>
               <h1 className="font-bold text-sidebar-primary-foreground">GBConnect</h1>
