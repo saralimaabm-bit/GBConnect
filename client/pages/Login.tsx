@@ -57,7 +57,7 @@ export default function Login() {
               <img
                 src="/logo.png"
                 alt="Logo"
-                className="w-12 h-12" // ajusta o tamanho
+                className="w-64 h-64" // ajusta o tamanho
               />
             </div>
           </div>
