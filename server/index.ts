@@ -42,17 +42,15 @@ export function createServer() {
   // Ranking
   app.get("/api/ranking", getRanking);
 
-  /**
-   * Serve SPA (Vite build) for any non-API route
-   */
+  // Serve SPA
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   const clientDistPath = path.join(__dirname, "../client/dist");
 
   app.use(express.static(clientDistPath));
 
-  // Catch-all for SPA routes
-  app.get("*", (_req, res) => {
+  // Catch-all for SPA (regex instead of *)
+  app.get(/.*/, (_req, res) => {
     res.sendFile(path.join(clientDistPath, "index.html"));
   });
 
