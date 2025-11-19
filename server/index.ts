@@ -3,6 +3,7 @@ import express from "express";
 import cors from "cors";
 import path from "path";
 import { fileURLToPath } from "url";
+
 import { handleDemo } from "./routes/demo";
 import { getAdminConfig, saveAdminConfig } from "./routes/admin";
 import { getBalance } from "./routes/balance";
@@ -18,38 +19,28 @@ export function createServer() {
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // API routes
+  // --- API Routes ---
   app.get("/api/ping", (_req, res) => {
-    const ping = process.env.PING_MESSAGE ?? "ping";
-    res.json({ message: ping });
+    res.json({ message: process.env.PING_MESSAGE ?? "ping" });
   });
 
   app.get("/api/demo", handleDemo);
-
-  // Auth
   app.post("/api/auth/validate-token", validateToken);
-
-  // Admin
   app.get("/api/admin/config", getAdminConfig);
   app.post("/api/admin/config", saveAdminConfig);
-
-  // Balance
   app.get("/api/balance", getBalance);
-
-  // Dashboard
   app.get("/api/dashboard/metrics", getDashboardMetrics);
-
-  // Ranking
   app.get("/api/ranking", getRanking);
 
-  // Serve SPA
+  // --- Frontend SPA ---
+  // Resolve caminho correto em ES Modules
   const __filename = fileURLToPath(import.meta.url);
   const __dirname = path.dirname(__filename);
   const clientDistPath = path.join(__dirname, "../client/dist");
 
   app.use(express.static(clientDistPath));
 
-  // Catch-all for SPA (regex instead of *)
+  // Catch-all para rotas do front-end (React/Vite SPA)
   app.get(/.*/, (_req, res) => {
     res.sendFile(path.join(clientDistPath, "index.html"));
   });
