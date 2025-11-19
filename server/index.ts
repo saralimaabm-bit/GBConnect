@@ -2,8 +2,8 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import path from "path";
+import { fileURLToPath } from "url";
 
-// Importar rotas
 import { handleDemo } from "./routes/demo";
 import { getAdminConfig, saveAdminConfig } from "./routes/admin";
 import { getBalance } from "./routes/balance";
@@ -14,12 +14,16 @@ import { getRanking } from "./routes/ranking";
 export function createServer() {
   const app = express();
 
+  // ESM workaround para __dirname
+  const __filename = fileURLToPath(import.meta.url);
+  const __dirname = path.dirname(__filename);
+
   // Middleware
   app.use(cors());
   app.use(express.json());
   app.use(express.urlencoded({ extended: true }));
 
-  // Rotas de exemplo / API
+  // API Routes
   app.get("/api/ping", (_req, res) => {
     const ping = process.env.PING_MESSAGE ?? "ping";
     res.json({ message: ping });
@@ -27,28 +31,28 @@ export function createServer() {
 
   app.get("/api/demo", handleDemo);
 
-  // Auth
+  // Auth routes
   app.post("/api/auth/validate-token", validateToken);
 
-  // Admin
+  // Admin routes
   app.get("/api/admin/config", getAdminConfig);
   app.post("/api/admin/config", saveAdminConfig);
 
-  // Balance
+  // Balance routes
   app.get("/api/balance", getBalance);
 
-  // Dashboard
+  // Dashboard routes
   app.get("/api/dashboard/metrics", getDashboardMetrics);
 
-  // Ranking
+  // Ranking routes
   app.get("/api/ranking", getRanking);
 
-  // Servir SPA do Vite (frontend)
-  const clientDistPath = path.join(__dirname, "../client/dist"); // ajuste se seu build estiver em outro lugar
+  // Serve frontend build
+  const clientDistPath = path.join(__dirname, "../client/dist");
   app.use(express.static(clientDistPath));
 
-  // Catch-all para SPA
-  app.get("/*", (_req, res) => {
+  // Catch-all: send index.html for SPA routes
+  app.get("*", (_req, res) => {
     res.sendFile(path.join(clientDistPath, "index.html"));
   });
 
