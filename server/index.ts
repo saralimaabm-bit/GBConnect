@@ -2,8 +2,6 @@ import "dotenv/config";
 import express from "express";
 import cors from "cors";
 import path from "path";
-import { fileURLToPath } from "url";
-
 import { handleDemo } from "./routes/demo";
 import { getAdminConfig, saveAdminConfig } from "./routes/admin";
 import { getBalance } from "./routes/balance";
@@ -21,7 +19,8 @@ export function createServer() {
 
   // --- API Routes ---
   app.get("/api/ping", (_req, res) => {
-    res.json({ message: process.env.PING_MESSAGE ?? "ping" });
+    const ping = process.env.PING_MESSAGE ?? "ping";
+	res.json({ message: ping });
   });
 
   app.get("/api/demo", handleDemo);
@@ -32,18 +31,7 @@ export function createServer() {
   app.get("/api/dashboard/metrics", getDashboardMetrics);
   app.get("/api/ranking", getRanking);
 
-  // --- Frontend SPA ---
-  // Resolve caminho correto em ES Modules
-  const __filename = fileURLToPath(import.meta.url);
-  const __dirname = path.dirname(__filename);
-  const clientDistPath = path.join(__dirname, "../client/dist");
 
-  app.use(express.static(clientDistPath));
-
-  // Catch-all para rotas do front-end (React/Vite SPA)
-  app.get(/.*/, (_req, res) => {
-    res.sendFile(path.join(clientDistPath, "index.html"));
-  });
 
   return app;
 }
