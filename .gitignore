@@ -14,7 +14,7 @@ dist-ssr
 *.zip
 *.rar
 
-# Editor directories and files
+## Editor directories and files
 .vscode/*
 !.vscode/extensions.json
 .idea
