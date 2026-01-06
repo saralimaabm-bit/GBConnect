@@ -42,7 +42,7 @@ export const getDashboardMetrics: RequestHandler = async (req, res) => {
       const row = rows[0] as any;
 
       // Calculate Ganho Hoje: acoeshoje * 0.005
-      const ganhoHoje = row.acoeshoje ? parseFloat(row.acoeshoje) * 0.005 : 0;
+      const ganhoHoje = row.acoeshoje ? parseFloat(row.acoeshoje) * 0.004 : 0;
 
       // Format the values from database
       const metrics = {

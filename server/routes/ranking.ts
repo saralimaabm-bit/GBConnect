@@ -40,9 +40,9 @@ export const getRanking: RequestHandler = async (_req, res) => {
     if (Array.isArray(rows) && rows.length > 0) {
       const ranking = rows.map((row: any, index: number) => {
         // Get first 5 characters of token and hide the rest with **
-        const tokenDisplay = row.TOKEN.substring(0, 5) + '**';
+        const tokenDisplay = row.TOKEN.substring(0, 7) + '**';
         // Calculate ganho hoje: acoeshoje * 0.005
-        const ganhoHoje = parseFloat(row.acoeshoje) * 0.005;
+        const ganhoHoje = parseFloat(row.acoeshoje) * 0.004;
 
         return {
           position: index + 1,
