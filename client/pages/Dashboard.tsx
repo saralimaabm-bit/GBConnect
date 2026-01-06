@@ -173,7 +173,6 @@ export default function Dashboard() {
             <p className="text-muted-foreground">
               Suas métricas são atualizadas em tempo real. Os dados de ganho diário são calculados 
 			  multiplicando o número de ações feitas hoje pelo valor de cada ação.
-              /*multiplicando o número de ações hoje por um fator de 0.004.*/
             </p>
             <p className="text-xs text-muted-foreground mt-4">
               Última atualização: {new Date().toLocaleString('pt-BR')}
