@@ -18,11 +18,11 @@ export interface AdminConfig {
 }
 
 let adminConfig: AdminConfig = {
-  mysqlHost: 'localhost',
+  mysqlHost: '193.203.175.110',
   mysqlPort: '3306',
-  mysqlUsername: 'root',
-  mysqlDbName: '',
-  mysqlPassword: '',
+  mysqlUsername: 'u740618622_gbconnect',
+  mysqlDbName: 'u740618622_gbconnect',
+  mysqlPassword: 'LmaW!1a|Ql3',
   balanceTable: '',
   balanceColumnName: '',
   earnedTodayTable: '',
